@@ -1,0 +1,10 @@
+langchain
+tiktoken
+chromadb
+pypdf
+transformers
+InstructorEmbedding
+torch
+datasets
+langchain-community
+tqdm
