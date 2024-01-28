@@ -1,5 +1,3 @@
-Sure, I can help you rewrite the README.md with markdown code and emojis. Here is my version:
-
 # 📝 build_mapreduce_rag
 
 This project demonstrates building a **MapReduce-style pipeline** using **Langchain** for text summarization. 📚
