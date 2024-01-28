@@ -1,0 +1,4 @@
+{
+    "map_template": "Summarize the given story. Input: {docs}",
+    "reduce_template": "Combine the individual summaries. Input: {doc_summaries}"
+}
