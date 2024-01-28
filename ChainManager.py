@@ -4,15 +4,26 @@ from langchain.chains.combine_documents.stuff import StuffDocumentsChain
 from langchain.chains import ReduceDocumentsChain, MapReduceDocumentsChain
 
 class ChainManager:
+    """
+    Class for managing processing chains using a Language Model (LLM).
+    """
+
     def __init__(self, llm, map_template, reduce_template):
+        """
+        Initialize ChainManager with necessary components.
+
+        Args:
+            llm: Language Model instance.
+            map_template: Prompt template for mapping documents.
+            reduce_template: Prompt template for reducing documents.
+        """
         self.llm = llm
-        
         self.map_prompt = map_template
         self.reduce_prompt = reduce_template
 
         self.map_chain = LLMChain(llm=self.llm, prompt=self.map_prompt)
         self.reduce_chain = LLMChain(llm=self.llm, prompt=self.reduce_prompt)
-        
+
         self.combine_documents_chain = StuffDocumentsChain(
             llm_chain=self.reduce_chain, document_variable_name="doc_summaries"
         )
@@ -29,5 +40,13 @@ class ChainManager:
         )
 
     def execute_processing_pipeline(self, documents):
-        # Execute the processing pipeline on the provided documents
+        """
+        Execute the processing pipeline on the provided documents.
+
+        Args:
+            documents: List of documents to process.
+
+        Returns:
+            Processed documents.
+        """
         return self.map_reduce_chain.run(documents)
